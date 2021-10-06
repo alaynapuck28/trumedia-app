@@ -29,6 +29,7 @@ export class PlayersComponent implements OnInit {
 
     if (!window.localStorage.token || today > tokenExp) {
       this.playersService.getAPIToken().pipe(mergeMap(data => {
+        console.log(data);
         this.token = data.token;
         window.localStorage.setItem('token', data.token);
         window.localStorage.setItem('expires', data.expires)

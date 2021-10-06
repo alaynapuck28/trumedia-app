@@ -6,6 +6,8 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch})=> fetch(
 
 console.log(process.env);
 const app = express();
+// Start the app by listening on the default Heroku port
+app.listen(process.env.PORT || 8080);
 
 // Serve only the static files form the dist directory
 app.use(express.static('./dist/project-trumedia'));
@@ -15,7 +17,9 @@ app.get('/players', function (request, response) {
 });
 
 app.get('/apiToken', async (request, response)=> {
+
     const apiKey = process.env.API_KEY
+    console.log(apiKey)
     const api_url = `https://project.trumedianetworks.com/api/token`
     var options = {
         method: "GET",
@@ -27,12 +31,14 @@ app.get('/apiToken', async (request, response)=> {
     const fetch_response = await fetch(api_url, options);
     const json = await fetch_response.json()
     response.json(json);
-  console.log(response.json(json));
-  response.end()
+
 
 });
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
 
-// Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 8080);
