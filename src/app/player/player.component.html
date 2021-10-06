@@ -1,0 +1,43 @@
+<h2>2018 Season</h2>
+<button class="btn btn-secondary" (click)="goBack()">Back</button>
+<div class="container">
+  <div *ngIf="this.player[0]">
+    <img src="{{ this.player[0].playerImage }}" width="200" />
+    <h3>{{ this.player[0].fullName }}</h3>
+  </div>
+</div>
+
+<div width="200" height="200">
+  <canvas id="canvas">{{ chart }}</canvas>
+</div>
+<div width="400" height="400">
+  <canvas id="otherCanvas">{{ chart }}</canvas>
+</div>
+<table class="table table-striped" style="width: 90%">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Game Date</th>
+      <th scope="col">Opponent</th>
+      <th scope="col">Att</th>
+      <th scope="col">Cmp</th>
+      <th scope="col">Yds/Att</th>
+      <th scope="col">Int</th>
+      <th scope="col">PsYds</th>
+      <th scope="col">RshYds</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let stat of this.player; let i = index">
+      <th>{{ i + 1 }}</th>
+      <td>{{ stat.gameDate | date: "MM/dd" }}</td>
+      <td><img src="{{ stat.opponentImage }}" /></td>
+      <td>{{ stat.Att }}</td>
+      <td>{{ stat.Cmp }}</td>
+      <td>{{ stat.PsYds / stat.Att | number: "1.0-1" }}</td>
+      <td>{{ stat.Int }}</td>
+      <td>{{ stat.PsYds }}</td>
+      <td>{{ stat.RshYds }}</td>
+    </tr>
+  </tbody>
+</table>

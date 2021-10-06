@@ -1,0 +1,44 @@
+.card_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 75vh;
+}
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.playerImage {
+  height: 200px;
+  width: 200px;
+}
+.teamImage {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  border: lightgrey 1px solid;
+  background-color: white;
+}
+.top {
+  text-align: center;
+}
+.player_info {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #295a8e;
+  padding: 2px 5px;
+}
+h4 {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+h1 {
+  color: #295a8e;
+}
+a {
+  text-decoration: none;
+}

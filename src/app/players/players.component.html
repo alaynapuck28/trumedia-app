@@ -1,0 +1,17 @@
+<div class="top mt-4">
+  <h1>TruMedia</h1>
+  <h1>{{ this.prod }}</h1>
+</div>
+<div *ngIf="this.players.length" class="card_container">
+  <div *ngFor="let player of this.players">
+    <a [routerLink]="['/player', player.playerId]">
+      <div class="card m-1" style="width: 17rem; height: 20rem">
+        <img class="playerImage" src="{{ player.playerImage }}" />
+        <div class="player_info">
+          <h4>{{ player.fullName }}</h4>
+          <img class="teamImage" src="{{ player.teamImage }}" />
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
