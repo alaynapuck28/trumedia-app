@@ -16,9 +16,9 @@ app.use(function(req, res, next) {
 // Serve only the static files form the dist directory
 app.use(express.static('./dist/project-trumedia'));
 
-app.get('/*', function (request, response) {
-    response.sendFile(path.join(__dirname, '/dist/project-trumedia/index.html'));
-});
+// app.get('/*', function (request, response) {
+//     response.sendFile(path.join(__dirname, '/dist/project-trumedia/index.html'));
+// });
 
 app.get('/apiToken', async (request, response)=> {
 
