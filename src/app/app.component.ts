@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
-import { Location }                 from '@angular/common';
 
 
 @Component({
@@ -14,12 +13,9 @@ export class AppComponent implements OnInit {
   title = 'trumedia-project';
  
 
-  constructor(private http: HttpClient, private location: Location) { }
+  constructor(private http: HttpClient) { }
   ngOnInit() {
 
-  }
-  goBack(): void {
-    this.location.back();
   }
 
 }

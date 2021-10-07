@@ -49,11 +49,11 @@ export class PlayersComponent implements OnInit {
   getAllPlayers(): void {
     this.playersService
         .getAllPlayers(this.token)
-        .subscribe(data =>  this.players = [...data]);
+        .subscribe(data =>  this.players = data);
   }
  
 
-  goToDetail(playerId){
+  goToDetail(playerId:string){
     console.log(playerId)
     this.router.navigate(['/player', playerId])
   }

@@ -7,17 +7,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { PlayersComponent } from './players/players.component';
 import { PlayerComponent } from './player/player.component';
 import { DatePipe } from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlayersComponent,
-    PlayerComponent
+    PlayerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

@@ -5,10 +5,24 @@
   flex-direction: row;
   height: 75vh;
 }
+.player_card {
+  transition: all 0.5s ease;
+}
+.player_card:hover {
+  transform: translate3D(0, -1px, 0) scale(1.03); /* move up slightly and zoom in */
+  transition: all 0.4s ease; /* zoom in */
+  cursor: pointer;
+}
 .card {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 19rem;
+  height: 22rem;
+}
+.card:hover {
+  box-shadow: 8px 28px 50px rgba(39, 44, 49, 0.07),
+    1px 6px 12px rgba(39, 44, 49, 0.04);
 }
 .playerImage {
   height: 200px;

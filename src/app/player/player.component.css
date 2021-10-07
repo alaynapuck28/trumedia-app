@@ -3,10 +3,49 @@
   justify-content: center;
   align-items: center;
 }
-body {
-  height: 100vh;
-}
 td img {
   height: 50px;
   width: 50px;
+}
+.tab-content > .tab-pane {
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
+.tab-content > .tab-pane.active {
+  height: auto;
+}
+.graph_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2% 0 5%;
+}
+
+/* card */
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.playerImage {
+  height: 200px;
+  width: 200px;
+}
+.teamImage {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  border: lightgrey 1px solid;
+  background-color: white;
+}
+.player_info {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #295a8e;
+  padding: 2px 5px;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
 }
