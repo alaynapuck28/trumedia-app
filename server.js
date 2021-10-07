@@ -16,11 +16,15 @@ app.use(function(req, res, next) {
 // Serve only the static files form the dist directory
 app.use(express.static('./dist/project-trumedia'));
 
-// app.get('/*', function (request, response) {
-//     response.sendFile(path.join(__dirname, '/dist/project-trumedia/index.html'));
-// });
+app.get('/*', function (request, response) {
+    response.sendFile(path.join(__dirname, '/dist/project-trumedia/index.html'));
+});
 
-app.get('/apiToken', async (request, response)=> {
+
+let apiRouter = express.Router()
+
+// GET /api/users
+apiRouter.get('/apiToken', async (request, response)=> {
 
     const apiKey = process.env.API_KEY
     console.log(apiKey)
@@ -39,6 +43,14 @@ app.get('/apiToken', async (request, response)=> {
 
 });
 
+// prefix apiRouter with '/api'
+app.use('/api', apiRouter)
 
 
+
+app.use(express.static('./dist/project-trumedia'));
+
+// app.get('/*', function (request, response) {
+//     response.sendFile(path.join(__dirname, '/dist/project-trumedia/index.html'));
+// })
 
