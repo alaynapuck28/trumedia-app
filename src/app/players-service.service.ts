@@ -10,15 +10,19 @@ import {catchError} from 'rxjs/operators'
 
 export class PlayersServiceService {
   token: any;
+  apiKey = environment.API_KEY;
 
   constructor(private http: HttpClient) { }
 
 
-  getAPIToken(){    
-  return this.http.get<any>('apiToken')
-  .pipe(catchError ((response:any)=> {
-  return throwError(response.error)
-}))
+  getAPIToken(apiKey: string){    
+    const headers = { 'apiKey': apiKey}
+    return this.http.get<any>('https://project.trumedianetworks.com/api/token', { headers })
+    .pipe(catchError ((response:any)=> {
+      return throwError(response.error)
+    }))
+
+
 
 }
 

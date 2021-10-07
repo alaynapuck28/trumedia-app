@@ -16,6 +16,7 @@ export class PlayersComponent implements OnInit {
   prod = environment.production;
   token = ''
   players = []
+  apiKey = environment.API_KEY
 
   constructor(private http: HttpClient, private router: Router, private playersService: PlayersServiceService) { }
   ngOnInit() {
@@ -28,7 +29,7 @@ export class PlayersComponent implements OnInit {
     let today = new Date();
 
     if (!window.localStorage.token || today > tokenExp) {
-      this.playersService.getAPIToken().pipe(mergeMap(data => {
+      this.playersService.getAPIToken(this.apiKey).pipe(mergeMap(data => {
         console.log(data);
         this.token = data.token;
         window.localStorage.setItem('token', data.token);
@@ -42,8 +43,7 @@ export class PlayersComponent implements OnInit {
       this.token = window.localStorage.token;
       this.getAllPlayers();
     }
-
-
+    
   }
 
   getAllPlayers(): void {

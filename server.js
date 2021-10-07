@@ -12,31 +12,12 @@ app.listen(process.env.PORT || 8080);
 // Serve only the static files form the dist directory
 app.use(express.static('./dist/project-trumedia'));
 
-app.get('/players', function (request, response) {
+app.get('/*', function (request, response) {
     response.sendFile(path.join(__dirname, '/dist/project-trumedia/index.html'));
 });
 
 
 
-// GET /api/users
-app.get('/apiToken', async (request, response)=> {
-
-    const apiKey = process.env.API_KEY
-    console.log(apiKey)
-    const api_url = `https://project.trumedianetworks.com/api/token`
-    var options = {
-        method: "GET",
-        headers: {
-          "apiKey": apiKey
-        }
-      };
-
-    const fetch_response = await fetch(api_url, options);
-    const json = await fetch_response.json()
-    response.json(json);
-
-
-});
 
 
 
