@@ -1,3 +1,8 @@
+.top {
+  text-align: center;
+  /* room for nav */
+  padding-top: 70px;
+}
 .card_container {
   display: flex;
   justify-content: center;
@@ -7,6 +12,7 @@
 }
 .player_card {
   transition: all 0.5s ease;
+  margin: auto;
 }
 .player_card:hover {
   transform: translate3D(0, -1px, 0) scale(1.03); /* move up slightly and zoom in */
@@ -35,9 +41,7 @@
   border: lightgrey 1px solid;
   background-color: white;
 }
-.top {
-  text-align: center;
-}
+
 .player_info {
   width: 100%;
   display: flex;

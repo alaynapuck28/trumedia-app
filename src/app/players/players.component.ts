@@ -21,8 +21,7 @@ export class PlayersComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router, private playersService: PlayersServiceService) { }
   ngOnInit() {
 
-   
-   // token exists make api call for players, 
+   // token exists make call for players, 
     //if doesn't exist fetch token and then fetch players
     let dateString = window.localStorage.expires 
     let tokenExp = new Date(dateString);
@@ -30,13 +29,12 @@ export class PlayersComponent implements OnInit {
 
     if (!window.localStorage.token || today > tokenExp) {
       this.playersService.getAPIToken(this.apiKey).pipe(mergeMap(data => {
-        console.log(data);
         this.token = data.token;
         window.localStorage.setItem('token', data.token);
         window.localStorage.setItem('expires', data.expires)
         return this.playersService.getAllPlayers(this.token)
       })).subscribe(data => {
-        this.players = [...data]
+        this.players = data
       });
 
     }else {

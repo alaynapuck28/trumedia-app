@@ -1,14 +1,22 @@
 <div class="top mt-4">
-  <h1>TruMedia</h1>
+  <h1>NFL Quarterbacks</h1>
 </div>
-<div *ngIf="this.players.length" class="card_container">
-  <div *ngFor="let player of this.players" class="player_card">
+<div
+  *ngIf="this.players.length"
+  class="card_container mx-auto row col-lg-10 col-md-12"
+>
+  <div
+    *ngFor="let player of this.players"
+    class="player_card col-xs-12 col-sm-6 col-md-4"
+  >
     <a [routerLink]="['/player', player.playerId]">
-      <div class="card m-1" style="width: 19rem; height: 22rem">
-        <img class="playerImage" src="{{ player.playerImage }}" />
-        <div class="player_info">
-          <h4>{{ player.fullName }}</h4>
-          <img class="teamImage" src="{{ player.teamImage }}" />
+      <div>
+        <div class="card m-1 mx-auto">
+          <img class="playerImage" src="{{ player.playerImage }}" />
+          <div class="player_info">
+            <h4>{{ player.fullName }}</h4>
+            <img class="teamImage" src="{{ player.teamImage }}" />
+          </div>
         </div>
       </div>
     </a>

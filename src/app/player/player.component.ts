@@ -1,8 +1,6 @@
-import { Component, OnInit, ElementRef  } from '@angular/core';
-import { Directive, EventEmitter, Input, Output, QueryList, ViewChildren } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap} from '@angular/router';
 import { PlayersServiceService } from '../players-service.service';
-import { Location }                 from '@angular/common';
 import { Chart, registerables } from 'chart.js';
 import { DatePipe } from '@angular/common';
 import {switchMap} from 'rxjs/operators';
@@ -48,10 +46,8 @@ export class PlayerComponent implements OnInit {
 
   constructor( 
     private route: ActivatedRoute, 
-    private playersService: PlayersServiceService,   
-    private location: Location,  
+    private playersService: PlayersServiceService,    
     public datepipe: DatePipe,
-    private elementRef: ElementRef
     ) { 
     Chart.register(...registerables)
   }
@@ -79,9 +75,6 @@ export class PlayerComponent implements OnInit {
  
   }
 
-  goBack(): void {
-    this.location.back();
-  }
   makeChart1(){
        //create chart
        this.chart = new Chart('canvas', {
@@ -89,14 +82,15 @@ export class PlayerComponent implements OnInit {
          data: {
           labels: this.gameDate,
           datasets: [{
-            label: 'Game Dates',
+            label: 'Yds/ATT by Game',
             data: this.ydsPerAtt,
             fill: true,
             borderColor: 'rgb(75, 192, 192)',
           }]
         },
         options: {
-          responsive: false,
+          responsive: true,
+          maintainAspectRatio: false,
           scales: {
             y: {
                 title: {
@@ -124,7 +118,8 @@ export class PlayerComponent implements OnInit {
       }],  
      },
      options: {
-       responsive: false,
+       responsive: true,
+       maintainAspectRatio: false,
        scales: {
         y: {
             title: {

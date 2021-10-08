@@ -37,7 +37,6 @@ export class PlayersServiceService {
   getPlayerDetail(id: number, token: string): Observable<any> {
     const headers = { 'tempToken': token}
     const url = 'https://project.trumedianetworks.com/api/nfl/player/'+ id
-    console.log(url);
     return this.http.get<any>(url, { headers })
     .pipe(catchError ((response:any)=> {
       return throwError(response.error)
