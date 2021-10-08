@@ -64,7 +64,11 @@ export class PlayerComponent implements OnInit {
           let compPerc = (single.Cmp/single.Att) * 100
           return compPerc.toFixed(2);
         })
-        this.gameDate = this.player.map((single) => this.datepipe.transform(single.gameDate, 'MM/dd') 
+        this.gameDate = this.player.map((single) =>{
+          let safariFix = single.gameDate.replace(/\s/g, "T") + 'Z'
+          return this.datepipe.transform(safariFix, 'MM/dd') 
+        } 
+    
         )
 
     this.makeChart1();
@@ -73,6 +77,9 @@ export class PlayerComponent implements OnInit {
   });
   }
  
+  }
+  formatDate(date){
+    return date.replace(/\s/g, "T") + 'Z'
   }
 
   makeChart1(){

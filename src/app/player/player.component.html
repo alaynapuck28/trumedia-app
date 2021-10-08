@@ -104,7 +104,7 @@
         <tbody>
           <tr *ngFor="let stat of this.player; let i = index">
             <th>{{ stat.week }}</th>
-            <td>{{ stat.gameDate | date: "MM/dd" }}</td>
+            <td>{{ formatDate(stat.gameDate) | date: "MM/dd" }}</td>
             <td>
               <ng-template #tipContent>{{ stat.opponent }}</ng-template>
               <img [ngbTooltip]="tipContent" src="{{ stat.opponentImage }}" />
